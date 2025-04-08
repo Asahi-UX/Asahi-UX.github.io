@@ -3,143 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Эффектная страница | </title>
+    <title>Сайт-визитка</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
             font-family: Arial, sans-serif;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Параллакс-эффект для фона */
-        .parallax {
-            min-height: 100vh;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .parallax::before {
-            content: '';
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            background-image: radial-gradient(rgba(255,255,255,0.2) 10%, transparent 20%);
-            background-size: 30px 30px;
-            animation: parallax 20s linear infinite;
-        }
-
-        @keyframes parallax {
-            0% { transform: translate(0,0); }
-            100% { transform: translate(-50%,-50%); }
-        }
-
-        /* Анимация заголовка */
-        .title {
-            color: white;
-            font-size: 4em;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            position: relative;
-            animation: titleFade 1.5s ease-out;
-        }
-
-        @keyframes titleFade {
-            0% { opacity: 0; transform: translateY(-50px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Карточки с hover-эффектом */
-        .cards-container {
-            padding: 50px 20px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            justify-content: center;
-            background: #f5f5f5;
-        }
-
-        .card {
-            width: 300px;
-            background: white;
-            border-radius: 15px;
+            margin: 0;
             padding: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
+            background-color: #f0f0f0;
         }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
-
-        /* Анимация загрузки */
-        .loader {
-            width: 50px;
-            height: 50px;
-            border: 5px solid #f3f3f3;
-            border-top: 5px solid #4ecdc4;
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .photo {
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
-            animation: spin 1s linear infinite;
             margin: 20px auto;
+            display: block;
+            object-fit: cover;
         }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .section {
+            margin: 30px 0;
         }
-
-        /* Адаптивность */
-        @media (max-width: 768px) {
-            .title {
-                font-size: 2.5em;
-                text-align: center;
-            }
+        .contacts {
+            text-align: center;
+        }
+        a {
+            color: #1a73e8;
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
-    <section class="parallax">
-        <h1 class="title">Добро пожаловать!</h1>
-    </section>
+    <div class="container">
+        <h1>Иван Иванов</h1>
+        <img src="https://example.com/ваше-фото.jpg" alt="Фото" class="photo">
+        
+        <div class="section">
+            <h2>Обо мне</h2>
+            <p>Привет! Я веб-разработчик с 5-летним опытом. Создаю современные и удобные сайты.</p>
+        </div>
 
-    <div class="cards-container">
-        <div class="card">
-            <h2>О нас</h2>
-            <p>Мы создаем удивительные цифровые продукты с любовью к деталям.</p>
+        <div class="section">
+            <h2>Услуги</h2>
+            <ul>
+                <li>Верстка сайтов</li>
+                <li>Frontend-разработка</li>
+                <li>Оптимизация</li>
+            </ul>
         </div>
-        <div class="card">
-            <h2>Проекты</h2>
-            <p>Исследуйте наши последние работы и достижения.</p>
-        </div>
-        <div class="card">
+
+        <div class="section contacts">
             <h2>Контакты</h2>
-            <p>Свяжитесь с нами для сотрудничества и новых идей.</p>
+            <p>📧 Email: <a href="mailto:example@mail.ru">example@mail.ru</a></p>
+            <p>📱 Телеграм: <a href="https://t.me/username">@ivanov</a></p>
+            <p>📍 Город: Москва</p>
         </div>
     </div>
-
-    <div class="loader"></div>
-
-    <script>
-        // Анимация при скролле
-        window.addEventListener('scroll', function() {
-            const cards = document.querySelectorAll('.card');
-            cards.forEach(card => {
-                const cardTop = card.getBoundingClientRect().top;
-                if(cardTop < window.innerHeight - 100) {
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                }
-            });
-        });
-    </script>
 </body>
 </html>
